@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/mCollapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="1" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#600f"
+                    app:layout_collapseMode="pin" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="左边"
+                        android:layout_centerVertical="true"
+                      android:layout_alignParentLeft="true"
+                        android:textColor="#fff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="右边"
+                        android:textColor="#fff" />
+
+                </RelativeLayout>
+
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FFC107"
+            android:gravity="center"
+            android:text="这是个标题"
+            android:textSize="20sp">
+
+        </TextView>
+    </android.support.design.widget.AppBarLayout>
+
+    <EditText
+        android:id="@+id/et_query"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_behavior="com.house.renting.EditHeaderBehavior"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#FFC107"
+        android:gravity="center"
+        android:text="这是内容"
+        android:textSize="20sp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </TextView>
+</android.support.design.widget.CoordinatorLayout>
