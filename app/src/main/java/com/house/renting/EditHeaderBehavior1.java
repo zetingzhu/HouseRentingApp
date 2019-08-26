@@ -1,23 +1,18 @@
 package com.house.renting;
 
 import android.content.Context;
-import android.nfc.Tag;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class EditHeaderBehavior extends CoordinatorLayout.Behavior<EditText> {
-    private static final String TAG = EditHeaderBehavior.class.getSimpleName();
+public class EditHeaderBehavior1 extends CoordinatorLayout.Behavior<EditText> {
+    private static final String TAG = EditHeaderBehavior1.class.getSimpleName();
 
     // 显示位置布局
     private int queryWidth = 0;
@@ -33,20 +28,20 @@ public class EditHeaderBehavior extends CoordinatorLayout.Behavior<EditText> {
 
     private final float toolbarHeightInPixel;
 
-    public EditHeaderBehavior(Context context, AttributeSet attrs) {
+    public EditHeaderBehavior1(Context context, AttributeSet attrs) {
         super(context, attrs);
         toolbarHeightInPixel = context.getResources().getDimensionPixelSize(R.dimen.dimen_60dp);
     }
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, EditText child, View dependency) {
-        return dependency instanceof AppBarLayout;
+        return dependency instanceof TextView;
     }
 
 
     @Override
-    public boolean onDependentViewChanged(CoordinatorLayout parent, EditText child, View dependency) {
-        AppBarLayout appBarLayout = (AppBarLayout) dependency;
+    public boolean onDependentViewChanged(CoordinatorLayout parent, EditText child, View dependency1) {
+        AppBarLayout appBarLayout = (AppBarLayout) parent.getChildAt(0);
         if (appBarLayout != null) {
             CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) appBarLayout.getChildAt(0);
             if (collapsingToolbarLayout != null) {
@@ -62,7 +57,7 @@ public class EditHeaderBehavior extends CoordinatorLayout.Behavior<EditText> {
                         // 查询父布局
                         mQueryParentHeight = view.getHeight();
                         // Coordinator布局剩余高度
-                        mDependencyTop = dependency.getTop();
+                        mDependencyTop = appBarLayout.getTop();
                         // 查询框距离顶部高度
                         mChildTop = child.getTop();
                         // 查询框高度
@@ -74,7 +69,7 @@ public class EditHeaderBehavior extends CoordinatorLayout.Behavior<EditText> {
 //                            Log.d("------------------", "可滑动范围 ：" + totalScrollRange + "当前滑动值: "+ mDependencyTop);
 
                         targetTop = (float) ((Math.abs(mDependencyTop) * mChildTop) / (Math.abs(mDependencyTop) + mQueryParentHeight));
-                        translationY = targetTop * -1;
+                        translationY = targetTop * -1 + 4;
                         child.setTranslationY(translationY);
                     }
                 }

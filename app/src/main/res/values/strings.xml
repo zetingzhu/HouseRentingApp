@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">HouseRentingApp</string>
+
+    <string name="share_behavior" translatable="false">com.house.renting.MessageBehavior</string>
+    <string name="drawable_behavior" translatable="false">com.house.renting.DrawableBehavior</string>
+
 </resources>
